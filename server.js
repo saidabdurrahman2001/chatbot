@@ -45,6 +45,10 @@ function getBotReply(message) {
   );
 }
 
+app.get("/health", (req, res) => {
+  res.json({ ok: true });
+});
+
 app.post("/api/chat", (req, res) => {
   const { message } = req.body;
 
@@ -56,10 +60,10 @@ app.post("/api/chat", (req, res) => {
   res.json({ reply });
 });
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Chatbot berjalan di http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Chatbot berjalan di port ${PORT}`);
 });
