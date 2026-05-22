@@ -1,12 +1,20 @@
 require("dotenv").config();
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const publicDir = path.join(__dirname, "public");
+const indexPath = path.join(publicDir, "index.html");
+
+if (!fs.existsSync(indexPath)) {
+  console.error("ERROR: index.html tidak ditemukan di:", indexPath);
+  process.exit(1);
+}
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(publicDir));
 
 function getBotReply(message) {
   const text = message.toLowerCase().trim();
@@ -61,9 +69,14 @@ app.post("/api/chat", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(indexPath);
 });
 
-app.listen(PORT, "0.0.0.0", () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
   console.log(`Chatbot berjalan di port ${PORT}`);
+});
+
+server.on("error", (err) => {
+  console.error("Gagal menjalankan server:", err);
+  process.exit(1);
 });
