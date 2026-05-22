@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatCompose — Use Cases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="6" y="8" width="20" height="16" rx="3" fill="#5b9bd5" />
+            <circle cx="12" cy="15" r="2" fill="#fff" />
+            <circle cx="20" cy="15" r="2" fill="#fff" />
+            <rect x="13" y="19" width="6" height="2" rx="1" fill="#fff" />
+            <rect x="14" y="4" width="4" height="4" rx="1" fill="#5b9bd5" />
+          </svg>
+          <span>CHATCOMPOSE</span>
+        </a>
+        <nav class="main-nav">
+          <a href="#beranda" class="active">Use Cases</a>
+          <a href="#layanan">Guides</a>
+          <a href="#kontak">Pricing</a>
+          <a href="#kontak">Contact</a>
+        </nav>
+        <a href="#login" class="btn-login">Login</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="beranda" class="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1>Use cases</h1>
+            <p class="lead">
+              ChatCompose is a chatbot system that can be integrated in your website, ecommerce,
+              social media and messaging apps. You can easily create and customize your bot.
+            </p>
+            <button type="button" class="btn-gradient" id="open-chat-hero">More</button>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="mock-panel">
+              <div class="mock-step active">
+                <span class="mock-num">1</span>
+                <div>
+                  <strong>Step 1</strong>
+                  <p>Choose a template</p>
+                </div>
+              </div>
+              <div class="mock-step">
+                <span class="mock-num">2</span>
+                <div>
+                  <strong>Step 2</strong>
+                  <p>Customize responses</p>
+                </div>
+              </div>
+              <div class="mock-step">
+                <span class="mock-num">3</span>
+                <div>
+                  <strong>Step 3</strong>
+                  <p>Deploy to your site</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Widget Chatbot -->
+    <div id="chat-widget" class="chat-widget is-open" aria-live="polite">
+      <button
+        type="button"
+        id="chat-toggle"
+        class="chat-toggle"
+        aria-label="Tutup chat"
+        aria-expanded="true"
+      >
+        <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div id="chat-panel" class="chat-panel">
+        <header class="chat-header">
+          <div class="chat-header-info">
+            <svg class="chat-header-robot" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="6" width="16" height="12" rx="2" fill="currentColor" opacity="0.9" />
+              <circle cx="9" cy="11" r="1.5" fill="#fff" />
+              <circle cx="15" cy="11" r="1.5" fill="#fff" />
+              <rect x="10" y="14" width="4" height="1.5" rx="0.5" fill="#fff" />
+            </svg>
+            <strong>ChatCompose Assistant</strong>
+          </div>
+          <button type="button" id="chat-close" class="chat-close" aria-label="Tutup chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </header>
+
+        <div id="chat-messages" class="chat-messages" role="log">
+          <div class="message-row message-row-bot">
+            <span class="msg-avatar msg-avatar-bot" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="10" rx="2" fill="#5b9bd5"/><circle cx="9.5" cy="11" r="1.2" fill="#fff"/><circle cx="14.5" cy="11" r="1.2" fill="#fff"/></svg>
+            </span>
+            <div class="message message-bot">
+              <p>Hello! I am your virtual assistant. Ask about hours, pricing, or contact info.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="chat-typing" class="chat-typing" hidden>
+          <span></span><span></span><span></span>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Enter your message"
+            autocomplete="off"
+            maxlength="500"
+            required
+          />
+          <button type="submit" class="btn-send" aria-label="Kirim pesan">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="/js/chat.js"></script>
+  </body>
+</html>
